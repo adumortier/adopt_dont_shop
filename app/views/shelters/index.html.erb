@@ -1,0 +1,7 @@
+<h2> Here is a list of our shelters: </h2>
+
+<% @shelters.each do |shelter| %>
+    <h2><%=shelter.name%> </h2>
+<% end %>    
+
+<h2> <a href='/shelters/new'>New Shelter </a> </h2>
