@@ -57,13 +57,14 @@ RSpec.describe 'shelters related pages', type: :feature do
   end
 
   it "the shelter show page displays an update shelter link to update the specific shelter information" do 
-    info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO'} 
+    info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => "02300"} 
     shelter1 = Shelter.create(info1)
-      
-    
-    visit "/shelters/#{shelter1.id}"
-  
-    expect(page).to have_link('Update Shelter')
+    page_link = "/shelters/" + shelter1.id.to_s
+    visit page_link
+    # visit "/shelters/1" # <%= shelter1.id %>"
+    save_and_open_page
+    # expect(page).to have_link('Update Shelter')
+
     click_link 'Update Shelter'
     expect(page).to have_current_path("/shelters/#{shelter1.id}/edit")
 
@@ -91,7 +92,7 @@ RSpec.describe 'shelters related pages', type: :feature do
   end
 
   it "the shelter show page displays a delete shelter link to delete the specific shelter" do 
-    info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO'} 
+    info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter1 = Shelter.create(info1)
     info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter2 = Shelter.create(info2)
@@ -100,7 +101,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     visit "/shelters/#{shelter1.id}"
     expect(page).to have_link('Delete Shelter')
     click_link 'Delete Shelter'
-    expect(page).to have_current_path("/shelters/")
+    expect(page).to have_current_path("/shelters")
     expect(page).to_not have_content('Rocky Mountain Puppy Rescue')
   end
 
