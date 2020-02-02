@@ -14,7 +14,7 @@ class PetsController < ApplicationController
 
   def create
     info = Pet.valid_input(pet_params)
-    info[:status] = 'adoptable'
+    info[:status] = 'Adoptable'
     shelter = Shelter.find(params[:shelter_id])
     pet = shelter.pets.create(info)
     redirect_to "/shelters/#{params[:shelter_id]}/pets"
