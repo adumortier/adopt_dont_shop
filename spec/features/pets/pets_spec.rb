@@ -12,9 +12,9 @@ RSpec.describe 'shelters related pages', type: :feature do
     info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
     shelter3 = Shelter.create!(info3)    
 
-    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img'}
+    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf', :description => 'not cool' }
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img'} 
+    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :description => "sticky"} 
     pet2 = Pet.create!(pet2_info)
 
     visit "/pets"
@@ -173,6 +173,28 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to_not have_content("Name: Rusky")
 
   end
+
+  it "formats_input" do
+      info1 = {:name => "Meg's Shelter", :address => '150 Main Street' , :city => 'Hershey' , :state => 'PA', :zip => '17033'} 
+      shelter1 = Shelter.create(info1)
+      visit "/shelters/#{shelter1.id}/pets"
+      click_link "Create Pet"
+      fill_in 'name', with: 'Snoopy'
+      fill_in 'age', with: '14'
+      fill_in 'description', with: 'Nasty'
+      fill_in 'sex', with: 'female'
+      fill_in 'image', with: 'some_image_path'
+
+      click_button "Create Pet"
+      
+      expect(page).to have_current_path("/shelters/#{shelter1.id}/pets")
+
+      expect(page).to have_content("Name: Snoopy")
+      expect(page).to have_content("Age: 14")
+      expect(page).to have_content("Description: Nasty")
+      expect(page).to have_content("Sex: F")
+      expect(page).to have_content("Image: some_image_path")  
+    end
 
   
 

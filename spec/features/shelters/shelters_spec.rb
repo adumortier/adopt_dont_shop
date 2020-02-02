@@ -145,7 +145,7 @@ RSpec.describe 'shelters related pages', type: :feature do
 
     expect(page).to have_content('Noisette')
     expect(page).to have_content('17')
-    expect(page).to have_content('female')
+    expect(page).to have_content('F')
     expect(page).to have_content('annoying')
     expect(page).to have_content('a cute puppy image here')
   end
