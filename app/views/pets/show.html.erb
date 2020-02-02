@@ -1,0 +1,13 @@
+<%= link_to "All pets", "/pets"%>
+<%= link_to "All Shelters", "/shelters"%>
+
+<h2> Here is the information for the pet you selected </h2>
+<p> Image: <%= @pet.image %> </h2>
+<p> Name: <%= @pet.name %> </p>
+<p> Description: <%= @pet.description %> </p>
+<p> Age: <%= @pet.age %> </p>
+<p> Sex: <%= @pet.sex %> </p>
+<p> Status: <%= @pet.status %> </p>
+
+<%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %>
+<%= link_to "Delete Pet", "/pets/#{@pet.id}", :method => :delete %>

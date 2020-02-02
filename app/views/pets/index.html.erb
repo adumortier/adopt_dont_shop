@@ -1,0 +1,17 @@
+<%= link_to "All Shelters", "/shelters"%>
+
+<h2> Here are all the pets: </h2>
+
+<% @pets.each do |pet| %>
+  <span id=<%="pet_#{pet.id}"%> >
+    <p>Name: <%=link_to pet.name, "/pets/#{pet.id}", :id => "pet_#{pet.id}_link" %>
+    <%= link_to "Edit", "/pets/#{pet.id}/edit" %> 
+    <%= link_to "Delete", "/pets/#{pet.id}", method: "delete" %> </p> 
+    <p>Age: <%=pet.age%> </p>
+    <p>Sex: <%=pet.sex%> </p>
+    <p>Image: <%=pet.image%> </p>
+    <p>Shelter: <%=link_to pet.shelter.name, "/shelters/#{pet.shelter.id}", :id => "shelter_#{pet.shelter.id}_link" %> </p>
+  </span>
+<% end %>    
+
+

@@ -1,10 +1,11 @@
-<form action="/shelters" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p style='font-family:Arial'> Enter the shelter''s information:</p>
-  <h2>Name : </h2><input id="name" type='text' name='shelter[name]'/><br/> <br/>
-  <h2>Address : </h2><input id="address" type='text' name='shelter[address]'/><br/> <br/>
-  <h2>City : </h2><input id="city" type='text' name='shelter[city]'/><br/> <br/>
-  <h2>Zip : </h2><input id="zip" type='text' name='shelter[zip]'/><br/> <br/>
-  <h2>State : </h2><input id="state" type='text' name='shelter[state]'/><br/> <br/>
-  <input type="submit" value="Create Shelter">
-</form>
+<%= link_to "All pets", "/pets"%>
+<%= link_to "All Shelters", "/shelters"%>
+
+<%= form_tag "/shelters" do %>
+  <p> <%= label_tag(:name, "Name :") %><%= text_field_tag :name %> </p>
+  <p> <%= label_tag(:address, "Address :") %><%= text_field_tag :address %> </p>
+  <p> <%= label_tag(:city, "City :") %><%= text_field_tag :city %> </p>
+  <p> <%= label_tag(:zip, "Zip :") %><%= text_field_tag :zip %> </p>
+  <p> <%= label_tag(:state, "State :") %><%= text_field_tag :state %> </p>
+  <%= submit_tag 'Create Shelter' %>
+<% end %>
