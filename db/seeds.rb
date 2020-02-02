@@ -10,9 +10,8 @@ shelter1 = Shelter.create(info1)
 info2 = {:name => "Meg's Shelter", :address => '150 Main Street' , :city => 'Hershey' , :state => 'PA', :zip => '17033'} 
 shelter2 = Shelter.create(info2)
 
-pet1_info = {:name => 'Athena', :age => 1 , :sex => 'F' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'Butthead'}
-pet1 = Pet.create!(pet1_info)
+pet1_info = {:name => 'Athena', :age => 1 , :sex => 'F' , :shelter => shelter1, :image => 'skhf.img', :status => 'Adoptable', :description => 'Butthead'}
+pet1 = Pet.create(pet1_info)
 
-
-pet2_info = {:name => 'Odell', :age => 4 , :sex => 'M' , :shelter => shelter2, :image => 'skhf.img', :status => 'pending', :description => 'Good dog'}
-pet2 = Pet.create!(pet2_info)
+pet2_info = {:name => 'Odell', :age => 4 , :sex => 'M' , :shelter => shelter2, :image => 'skhf.img', :status => 'Adoptable', :description => 'Good dog'}
+pet2 = Pet.create(pet2_info)
