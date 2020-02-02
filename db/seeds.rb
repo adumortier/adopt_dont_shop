@@ -9,3 +9,5 @@ info1 = {:name => "Mike's Shelter", :address => '1331 17th Street' , :city => 'D
 shelter1 = Shelter.create(info1)
 info2 = {:name => "Meg's Shelter", :address => '150 Main Street' , :city => 'Hershey' , :state => 'PA', :zip => '17033'} 
 shelter2 = Shelter.create(info2)
+
+  

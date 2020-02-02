@@ -1,7 +1,13 @@
-<h2> Here is a list of our shelters: </h2>
+<%= link_to "All pets", "/pets"%>
+
+<h3> Here is a list of our shelters: </h3>
 
 <% @shelters.each do |shelter| %>
-    <h2><%=shelter.name%> </h2>
+    <span id=<%="shelter_#{shelter.id}"%> >
+    <div style="float: left; width: auto;"> <%=link_to shelter.name, "/shelters/#{shelter.id}", :id => "shelter_#{shelter.id}_link" %>  </div> 
+      <%= button_to "Edit", "/shelters/#{shelter.id}/edit", :method => :get %>
+      <%= button_to "Delete", "/shelters/#{shelter.id}", :method => :delete %>
+    </span> <br>
 <% end %>    
 
-<h2> <a href='/shelters/new'>New Shelter </a> </h2>
+<%= link_to "New Shelter", '/shelters/new' %>

@@ -12,11 +12,11 @@ class SheltersController < ApplicationController
   end
 
   def create
-    info = { :name => params[:shelter][:name], 
-      :address => params[:shelter][:address], 
-      :city => params[:shelter][:city], 
-      :state => params[:shelter][:state], 
-      :zip => params[:shelter][:zip]} 
+    info = { :name => params[:name], 
+      :address => params[:address], 
+      :city => params[:city], 
+      :state => params[:state], 
+      :zip => params[:zip]}
       shelter = Shelter.create(info)
       shelter.save
       redirect_to '/shelters'
@@ -41,6 +41,15 @@ class SheltersController < ApplicationController
   def destroy
     Shelter.destroy(params[:id])
     redirect_to '/shelters'
+  end
+
+  def shelterpets
+    @shelter = Shelter.find(params[:shelter_id])
+  end
+
+  def deletepet
+    Pet.destroy(params[:pet_id])
+    redirect_to '/shelters/' + params[:shelter_id] + '/pets'
   end
 
 end
