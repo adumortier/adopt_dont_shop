@@ -10,8 +10,4 @@
     it { should belong_to :shelter }
   end
 
-  # describe "methods" do
-    
-  # end
-
 end

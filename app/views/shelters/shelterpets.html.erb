@@ -1,16 +1,15 @@
-<%= link_to "All pets", "/pets"%>
-<%= link_to "All Shelters", "/shelters"%>
 
 <h3> Here are the pets available at <%=link_to @shelter.name, "/shelters/#{@shelter.id}", :id => "shelter_#{@shelter.id}_link" %> : </h3>
 
 <% @shelter.pets.each do |pet| %>
+  <hr />
   <span id=<%="pet_#{pet.id}"%> >
     <p>Name: <%=link_to pet.name, "/pets/#{pet.id}", :id => "pet_#{pet.id}_link" %>
     <%= link_to "Edit", "/pets/#{pet.id}/edit"%>  
     <%= link_to "Delete", "/shelters/#{@shelter.id}/pets/#{pet.id}", method: "delete" %> </p> 
     <p>Age: <%=pet.age%> </p> 
     <p>Sex: <%=pet.sex%> </p> 
-    <p>Image: <%=pet.image%> </p> 
+    <img src=<%= pet.image %>% alt="a cute dog">
     <p>Description: <%=pet.description%> </p> 
     <p>Status: <%=pet.status%> </p> 
   </span>

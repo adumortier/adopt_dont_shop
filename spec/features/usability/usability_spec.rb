@@ -52,41 +52,41 @@ RSpec.describe "usability of views", type: :feature do
     pet4 = Pet.create!(pet4_info)
 
     visit "/"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets")
 
     visit "/shelters"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/shelters"
     click_link("New Shelter")
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/pets/#{pet1.id}"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
     
     visit "/pets/#{pet1.id}/edit"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/shelters/#{shelter1.id}/pets"
     click_link("Create Pet")
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/shelters/new"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/shelters/#{shelter1.id}"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
     visit "/shelters/#{shelter1.id}/edit"
-    click_link("All pets")
+    click_link("All Pets")
     expect(page).to have_current_path("/pets") 
 
 
@@ -130,7 +130,7 @@ RSpec.describe "usability of views", type: :feature do
     fill_in 'sex', with: 'female'
     fill_in 'image', with: 'some_image_path'
 
-    click_button "Submit"
+    click_button "Update Pet"
 
     expect(page).to have_current_path("/pets/#{pet3.id}")
 
@@ -138,13 +138,13 @@ RSpec.describe "usability of views", type: :feature do
     expect(page).to have_content("Age: 14")
     expect(page).to have_content("Description: Nasty")
     expect(page).to have_content("Sex: female")
-    expect(page).to have_content("Image: some_image_path")
+    expect(page).to have_css("img[src*='some_image_path']")
 
     expect(page).to_not have_content("Name: Rusky")
     expect(page).to_not have_content("Age: 4")
     expect(page).to_not have_content("Description: horrible")
     expect(page).to_not have_content("Sex: M")
-    expect(page).to_not have_content("Image: skhf.img")
+    expect(page).to_not have_css("img[src*='skhf.img']")
 
     visit "/shelters/#{shelter2.id}/pets"
 

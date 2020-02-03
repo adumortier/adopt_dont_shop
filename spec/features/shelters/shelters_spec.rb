@@ -76,7 +76,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     fill_in 'city', with: 'Aurora'
     fill_in 'state', with: 'CO'
     fill_in 'zip', with: '02301'
-    click_button 'Submit'
+    click_button 'Update Shelter'
 
     expect(page).to have_current_path("/shelters/#{shelter1.id}")
 
@@ -134,7 +134,7 @@ RSpec.describe 'shelters related pages', type: :feature do
 
     expect(page).to have_button("Create Pet")
 
-    fill_in 'image', with: 'a cute puppy image here'
+    fill_in 'image', with: 'a_cute_puppy_image_here'
     fill_in 'name', with: 'Noisette'
     fill_in 'description', with: 'annoying'
     fill_in 'age', with: '17'
@@ -147,7 +147,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to have_content('17')
     expect(page).to have_content('F')
     expect(page).to have_content('annoying')
-    expect(page).to have_content('a cute puppy image here')
+    expect(page).to have_css("img[src*='a_cute_puppy_image_here']")
   end
 
   it "the shelter index page has an edit button next to each shelter" do 
@@ -188,7 +188,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     fill_in 'city', with: 'Aurora'
     fill_in 'state', with: 'CO'
     fill_in 'zip', with: '02301'
-    click_button 'Submit'
+    click_button 'Update Shelter'
 
     expect(page).to have_current_path("/shelters/#{shelter1.id}")
 
