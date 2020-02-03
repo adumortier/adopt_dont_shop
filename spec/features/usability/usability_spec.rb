@@ -6,20 +6,6 @@ RSpec.describe "usability of views", type: :feature do
 
     info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter1 = Shelter.create!(info1)
-    info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
-    shelter2 = Shelter.create!(info2)
-    info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
-    shelter3 = Shelter.create!(info3)
-
-    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
-    pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
-
-    pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
-    pet3 = Pet.create!(pet3_info)
-    pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
-    pet4 = Pet.create!(pet4_info)
 
     visit "/shelters/#{shelter1.id}/pets"
     click_link("shelter_#{shelter1.id}_link")
@@ -36,21 +22,9 @@ RSpec.describe "usability of views", type: :feature do
 
     info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter1 = Shelter.create!(info1)
-    info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
-    shelter2 = Shelter.create!(info2)
-    info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
-    shelter3 = Shelter.create!(info3)
-
     pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
-
-    pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
-    pet3 = Pet.create!(pet3_info)
-    pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
-    pet4 = Pet.create!(pet4_info)
-
+   
     visit "/"
     click_link("All Pets")
     expect(page).to have_current_path("/pets")
@@ -88,8 +62,7 @@ RSpec.describe "usability of views", type: :feature do
     visit "/shelters/#{shelter1.id}/edit"
     click_link("All Pets")
     expect(page).to have_current_path("/pets") 
-
-
+    
   end
 
   it "the pets index pages have edit links next to every pet" do 
@@ -100,11 +73,6 @@ RSpec.describe "usability of views", type: :feature do
     shelter2 = Shelter.create!(info2)
     info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
     shelter3 = Shelter.create!(info3)
-
-    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
-    pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
     pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
     pet3 = Pet.create!(pet3_info)
     pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
@@ -153,6 +121,7 @@ RSpec.describe "usability of views", type: :feature do
     end
 
     expect(page).to have_current_path("/pets/#{pet4.id}/edit")
+
   end
 
   it "the pets index pages have delete links next to every pet" do 
@@ -161,15 +130,8 @@ RSpec.describe "usability of views", type: :feature do
     shelter1 = Shelter.create!(info1)
     info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter2 = Shelter.create!(info2)
-    info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
-    shelter3 = Shelter.create!(info3)
-
     pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
-    pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
-    pet3 = Pet.create!(pet3_info)
     pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
     pet4 = Pet.create!(pet4_info)
 
@@ -178,11 +140,12 @@ RSpec.describe "usability of views", type: :feature do
     within("span#pet_#{pet1.id}") do
       click_link "Delete"
     end
+
     expect(page).to have_current_path("/pets")
     expect(page).to_not have_content("Name: Rusky")
 
-
     visit "/shelters/#{shelter2.id}/pets"
+
     within("span#pet_#{pet4.id}") do
       click_link "Delete"
     end
@@ -195,20 +158,9 @@ RSpec.describe "usability of views", type: :feature do
 
     info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => '80203'} 
     shelter1 = Shelter.create!(info1)
-    info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
-    shelter2 = Shelter.create!(info2)
-    info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
-    shelter3 = Shelter.create!(info3)
-
     pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
-    pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
-    pet3 = Pet.create!(pet3_info)
-    pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
-    pet4 = Pet.create!(pet4_info)
-
+   
     visit "/pets"
     click_link("pet_#{pet1.id}_link")
     expect(page).to have_current_path("/pets/#{pet1.id}")
@@ -220,22 +172,11 @@ RSpec.describe "usability of views", type: :feature do
   end
 
   it 'each view page has a link to the shelter index at the top' do 
+
     info1 = {:name => 'Rocky Mountain Puppy Rescue', :address => '11 Market Street' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
     shelter1 = Shelter.create!(info1)
-    info2 = {:name => 'Cuttest Puppy Rescue', :address => '729th E 10th Avenue' , :city => 'Denver' , :state => 'CO', :zip => '80202'} 
-    shelter2 = Shelter.create!(info2)
-    info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
-    shelter3 = Shelter.create!(info3)
-
     pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf.img', :status => 'pending', :description => 'horrible'}
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :status => 'adoptable', :description => 'aggressive'} 
-    pet2 = Pet.create!(pet2_info)
-
-    pet3_info = {:name => 'Silly', :age => 9 , :sex => 'M' , :shelter => shelter1, :image => 'skasdhf.img', :status => 'pending', :description => 'on fire'}
-    pet3 = Pet.create!(pet3_info)
-    pet4_info = {:name => 'Goofy', :age => 7 , :sex => 'F' , :shelter => shelter2, :image => 'sdfasdskhf.img', :status => 'adoptable', :description => 'mean'} 
-    pet4 = Pet.create!(pet4_info)
 
     visit "/"
     click_link("All Shelters")
