@@ -10,8 +10,8 @@ shelter1 = Shelter.create(info1)
 info2 = {:name => "Meg's Shelter", :address => '150 Main Street' , :city => 'Hershey' , :state => 'PA', :zip => '17033'} 
 shelter2 = Shelter.create(info2)
 
-pet1_info = {:name => 'Athena', :age => 1 , :sex => 'F' , :shelter => shelter1, :image => 'skhf.img', :status => 'Adoptable', :description => 'Butthead'}
+pet1_info = {:name => 'Athena', :age => 1 , :sex => 'F' , :shelter => shelter1, :image => 'https://cdn1-www.dogtime.com/assets/uploads/2019/04/StubbornDogBreeds1.jpg', :status => 'Adoptable', :description => 'Butthead'}
 pet1 = Pet.create(pet1_info)
 
-pet2_info = {:name => 'Odell', :age => 4 , :sex => 'M' , :shelter => shelter2, :image => 'skhf.img', :status => 'Adoptable', :description => 'Good dog'}
+pet2_info = {:name => 'Odell', :age => 4 , :sex => 'M' , :shelter => shelter2, :image => 'http://25.media.tumblr.com/tumblr_m814bbP7ju1rpcozto1_500.jpg', :status => 'Adoptable', :description => 'Good dog'}
 pet2 = Pet.create(pet2_info)
