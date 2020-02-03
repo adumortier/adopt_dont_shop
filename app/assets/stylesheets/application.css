@@ -75,9 +75,10 @@ hr {
     border: 1px solid rgb(51, 50, 50);
 }
 
-.small_image {
-  width:20%;
-  padding: 2%;
-  float:right; 
-  display:inline;
+.main_image {
+  width:50%;
+  border-radius: 20px;
+  padding-left: 0%;
+  padding-right: 0%;
+  
 }
