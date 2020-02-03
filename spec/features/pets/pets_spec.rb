@@ -12,9 +12,9 @@ RSpec.describe 'shelters related pages', type: :feature do
     info3 = {:name => 'Desperate Puppy Rescue', :address => '1931 Larimer Street' , :city => 'Denver' , :state => 'CO', :zip => '80201'} 
     shelter3 = Shelter.create!(info3)    
 
-    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'skhf', :description => 'not cool' }
+    pet1_info = {:name => 'Rusky', :age => 4 , :sex => 'M' , :shelter => shelter1, :image => 'https://www.sheknows.com/wp-content/uploads/2018/08/fajkx3pdvvt9ax6btssg.jpeg', :description => 'not cool' }
     pet1 = Pet.create!(pet1_info)
-    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'sdfskhf.img', :description => "sticky"} 
+    pet2_info = {:name => 'Brusher', :age => 3 , :sex => 'F' , :shelter => shelter2, :image => 'http://www.pethealthnetwork.com/sites/default/files/hemorrhagic-gastroenteritis-hge-looms-large-over-small-dogs-487505995.jpg', :description => "sticky"} 
     pet2 = Pet.create!(pet2_info)
 
     visit "/pets"
@@ -23,13 +23,13 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
     expect(page).to have_content(pet1.shelter.name)
-    expect(page).to have_content(pet1.image)
+    expect(page).to have_css("img[src*='#{pet1.image}']")
 
     expect(page).to have_content(pet2.name)
     expect(page).to have_content(pet2.age)
     expect(page).to have_content(pet2.sex)
     expect(page).to have_content(pet2.shelter.name)
-    expect(page).to have_content(pet2.image)
+    expect(page).to have_css("img[src*='#{pet2.image}']")
   end
 
   it 'the shelter pets index page shows a list of all the pets for that shelter' do 
@@ -56,13 +56,13 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
     expect(page).to have_content(pet1.shelter.name)
-    expect(page).to have_content(pet1.image)
+    expect(page).to have_css("img[src*='#{pet1.image}']")
 
     expect(page).to have_content(pet3.name)
     expect(page).to have_content(pet3.age)
     expect(page).to have_content(pet3.sex)
     expect(page).to have_content(pet3.shelter.name)
-    expect(page).to have_content(pet3.image)
+    expect(page).to have_css("img[src*='#{pet3.image}']")
   end
 
 
@@ -92,7 +92,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to have_content(pet1.sex)
     expect(page).to have_content(pet1.description)
     expect(page).to have_content(pet1.status)
-    expect(page).to have_content(pet1.image)
+    expect(page).to have_css("img[src*='#{pet1.image}']")
   end
 
   it "the pet update page allows users to update pet's information" do
@@ -133,7 +133,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     fill_in 'sex', with: 'female'
     fill_in 'image', with: 'some_image_path'
 
-    click_button "Submit"
+    click_button "Update Pet"
 
     expect(page).to have_current_path("/pets/#{pet1.id}")
 
@@ -141,7 +141,7 @@ RSpec.describe 'shelters related pages', type: :feature do
     expect(page).to have_content("Age: 14")
     expect(page).to have_content("Description: Nasty")
     expect(page).to have_content("Sex: female")
-    expect(page).to have_content("Image: some_image_path")
+    expect(page).to have_css("img[src*='some_image_path']")
 
     expect(page).to_not have_content("Name: Rusky")
     expect(page).to_not have_content("Age: 4")
@@ -193,7 +193,7 @@ RSpec.describe 'shelters related pages', type: :feature do
       expect(page).to have_content("Age: 14")
       expect(page).to have_content("Description: Nasty")
       expect(page).to have_content("Sex: F")
-      expect(page).to have_content("Image: some_image_path")  
+      expect(page).to have_css("img[src*='some_image_path']")
     end
 
   

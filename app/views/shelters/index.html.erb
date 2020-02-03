@@ -1,8 +1,8 @@
-<%= link_to "All pets", "/pets"%>
 
-<h3> Here is a list of our shelters: </h3>
+<h2> Here is a list of our shelters: </h2>
 
 <% @shelters.each do |shelter| %>
+ <hr />
     <span id=<%="shelter_#{shelter.id}"%> >
     <div style="float: left; width: auto;"> <%=link_to shelter.name, "/shelters/#{shelter.id}", :id => "shelter_#{shelter.id}_link" %>  </div> 
       <%= button_to "Edit", "/shelters/#{shelter.id}/edit", :method => :get %>
