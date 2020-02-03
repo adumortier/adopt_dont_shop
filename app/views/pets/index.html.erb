@@ -3,13 +3,15 @@
 <% @pets.each do |pet| %>
  <hr />
   <span id=<%="pet_#{pet.id}"%> >
-    <p>Name: <%=link_to pet.name, "/pets/#{pet.id}", :id => "pet_#{pet.id}_link" %>
-    <%= link_to "Edit", "/pets/#{pet.id}/edit" %> 
-    <%= link_to "Delete", "/pets/#{pet.id}", method: "delete" %> </p> 
-    <p>Age: <%=pet.age%> </p>
-    <p>Sex: <%=pet.sex%> </p>
-    <p> <img src=<%= pet.image %> alt="a cute dog"> </p>
-    <p>Shelter: <%=link_to pet.shelter.name, "/shelters/#{pet.shelter.id}", :id => "shelter_#{pet.shelter.id}_link" %> </p>
+    <div style="float: left, display:inline">
+      <span> Name: <%=link_to pet.name, "/pets/#{pet.id}", :id => "pet_#{pet.id}_link" %> </span>
+      <span style="padding-left=10%px%"> <%= link_to "Edit", "/pets/#{pet.id}/edit" %>  </span> 
+      <%= link_to "Delete", "/pets/#{pet.id}", method: "delete" %>  
+      <p>Age: <%=pet.age%> </p>
+      <p>Sex: <%=pet.sex%> </p>
+      <p>Shelter: <%=link_to pet.shelter.name, "/shelters/#{pet.shelter.id}", :id => "shelter_#{pet.shelter.id}_link" %> </p> 
+    </div>
+    <img src=<%= pet.image %> alt="a cute dog"> 
   </span>
 <% end %>    
 
